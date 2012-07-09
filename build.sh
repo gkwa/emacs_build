@@ -1,3 +1,4 @@
+cat >build1.sh<<'EOF'
 cd ~/play/emacs
 echo "Building @`date`" | tee -a build.log
 make clean 2>/dev/null
@@ -24,3 +25,6 @@ CFLAGS="-pipe -march=nocona" ./configure --prefix=/usr/local/stow/emacs --build 
 # http://www.emacswiki.org/emacs/BuildingEmacs#toc2
 make bootstrap -j3 && make install prefix=/usr/local/stow/emacs
 stow emacs
+EOF
+
+sh -x build1.sh
