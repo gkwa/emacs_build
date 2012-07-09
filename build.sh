@@ -1,4 +1,10 @@
 cat >build1.sh<<'EOF'
+
+stow --version
+if test ! -z $?; then
+   echo we relying on stow here, please 'brew install stow' first
+fi
+
 cd ~/play/emacs
 echo "Building @`date`" | tee -a build.log
 make clean 2>/dev/null
