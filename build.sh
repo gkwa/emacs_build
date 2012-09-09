@@ -12,13 +12,27 @@ git reset --hard
 git clean -dfx
 git pull
 make extraclean
-STRINGS=nextstep/Cocoa/Emacs.base/Contents/Resources/English.lproj/InfoPlist.strings
 git remote update
 git rebase origin/master
+STRINGS=nextstep/Cocoa/Emacs.base/Contents/Resources/English.lproj/InfoPlist.strings
+
+# parse this: CFBundleShortVersionString = "Version 24.2.50";
+# to get version out of $STRINGS file
+VNUM=$(\
+grep CFBundleShortVersionString $STRINGS | \
+cut -d\= -f2 | cut -d\" -f2 | \
+tr -s " " | \
+cut -d" "  -f2)
+echo $VNUM
+
+if test -z "$VNUM"; then
+	echo couldn\'t parse VNUM
+	echo exiting...
+	exit 1
+fi;
+
 DATE=`date -u +"%Y-%m-%d %H:%M:%S %Z"`
 DAY=`date -u +"%Y-%m-%d"`
-ORIG=`grep ^AC_INIT configure.in`
-VNUM=`echo $ORIG | cut -d\  -f2-999 | sed s/\)$//`
 REV=`git log --no-color --pretty=format:%H origin/master^..origin/master`
 VERS="$VNUM Git $REV $DATE"
 echo $VERS
