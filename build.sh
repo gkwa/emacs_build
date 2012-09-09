@@ -14,6 +14,11 @@ git pull
 make extraclean
 git remote update
 git rebase origin/master
+
+if test -z "$(brew list | grep giflib)"; then
+	brew install giflib
+fi
+
 STRINGS=nextstep/Cocoa/Emacs.base/Contents/Resources/English.lproj/InfoPlist.strings
 
 # parse this: CFBundleShortVersionString = "Version 24.2.50";
