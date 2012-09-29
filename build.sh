@@ -1,5 +1,7 @@
 cat >build1.sh<<'EOF'
 
+set -e
+
 stow --version
 if test ! -z $?; then
    echo we relying on stow here, please 'brew install stow' first
