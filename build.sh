@@ -13,10 +13,10 @@ echo "Building @`date`" | tee -a build.log
 make clean 2>/dev/null
 git reset --hard
 git clean -dfx
-git pull
+# git pull
 make extraclean
-git remote update
-git rebase origin/master
+# git remote update
+# git rebase origin/master
 
 if test -z "$(brew list | grep giflib)"; then
 	brew install giflib
