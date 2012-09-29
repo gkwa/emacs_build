@@ -65,6 +65,13 @@ CFLAGS="-pipe -march=nocona" ./configure --prefix=/usr/local/stow/$edir --build 
 time make bootstrap -j3 && time make install prefix=/usr/local/stow/$edir
 cd /usr/local/stow
 stow $edir
+
+# http://osxdaily.com/2012/08/03/send-an-alert-to-notification-center-from-the-command-line-in-os-x/
+test ! -z "$(type terminal-notifier)" && \
+terminal-notifier -message "build.sh finished"
+
 EOF
+
+
 
 sh -x build1.sh
