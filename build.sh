@@ -22,6 +22,10 @@ if test -z "$(brew list | grep giflib)"; then
 	brew install giflib
 fi
 
+if test -z "$(brew list | grep libpng)"; then
+	brew install libpng
+fi
+
 STRINGS=nextstep/Cocoa/Emacs.base/Contents/Resources/English.lproj/InfoPlist.strings
 
 # parse this: CFBundleShortVersionString = "Version 24.2.50";
