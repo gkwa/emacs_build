@@ -26,6 +26,8 @@ if test -z "$(brew list | grep libpng)"; then
 	brew install libpng
 fi
 
+sha1=$(git rev-parse --short=5 head)
+
 STRINGS=nextstep/Cocoa/Emacs.base/Contents/Resources/English.lproj/InfoPlist.strings
 
 # parse this: CFBundleShortVersionString = "Version 24.2.50";
@@ -35,6 +37,8 @@ grep CFBundleShortVersionString $STRINGS | \
 cut -d\= -f2 | cut -d\" -f2 | \
 tr -s " " | \
 cut -d" "  -f2)
+VNUM=$VNUM.$sha1
+
 echo $VNUM
 
 if test -z "$VNUM"; then
