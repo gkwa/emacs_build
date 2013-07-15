@@ -47,7 +47,8 @@ REV=`git log --no-color --pretty=format:%H origin/master^..origin/master`
 VERS="$VNUM Git $REV $DATE"
 echo $VERS
 ZIPF="Cocoa Emacs ${VNUM} Git $REV ${DAY}.zip"
-unset EMACSDATA; unset EMACSDOC; echo $EMACSDATA $EMACSDOC;
+unset EMACSDATA
+unset EMACSDOC
 make configure
 
 edir=emacs-$VNUM
