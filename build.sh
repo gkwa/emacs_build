@@ -51,6 +51,9 @@ unset EMACSDATA
 unset EMACSDOC
 make configure
 
+# google search these params
+# pipe march=nocona ./configure prefix build i686-apple-darwin10.0.0 --with-x
+
 edir=emacs-$VNUM
 CFLAGS="-pipe -march=nocona" ./configure --prefix=/usr/local/stow/$edir --build i686-apple-darwin10.0.0 --with-x
 
