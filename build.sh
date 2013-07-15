@@ -27,17 +27,11 @@ if test -z "$(brew list | grep libpng)"; then
 fi
 
 sha1=$(git rev-parse --short=5 head)
+VNUM=$(grep AC_INIT configure.ac | grep -oE '[[:digit:]\.]+')
+VNUM=$VNUM.$sha1 #looks like 24.3.50.ec1f92
 
-STRINGS=nextstep/Cocoa/Emacs.base/Contents/Resources/English.lproj/InfoPlist.strings
 
-# parse this: CFBundleShortVersionString = "Version 24.2.50";
-# to get version out of $STRINGS file
-VNUM=$(\
-grep CFBundleShortVersionString $STRINGS | \
-cut -d\= -f2 | cut -d\" -f2 | \
-tr -s " " | \
-cut -d" "  -f2)
-VNUM=$VNUM.$sha1
+
 
 echo $VNUM
 
@@ -53,8 +47,6 @@ REV=`git log --no-color --pretty=format:%H origin/master^..origin/master`
 VERS="$VNUM Git $REV $DATE"
 echo $VERS
 ZIPF="Cocoa Emacs ${VNUM} Git $REV ${DAY}.zip"
-sed "s/$VNUM,/$VERS,/" < $STRINGS > ${STRINGS}.tmp
-mv ${STRINGS}.tmp $STRINGS
 unset EMACSDATA; unset EMACSDOC; echo $EMACSDATA $EMACSDOC;
 make configure
 
