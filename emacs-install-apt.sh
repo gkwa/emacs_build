@@ -3,7 +3,7 @@
 sudo apt-get -y -qq install build-essential libncurses-dev
 
 vermajor=24
-verminor=4
+verminor=5
 ver=$vermajor.$verminor
 
 mkdir -p /usr/local/src
