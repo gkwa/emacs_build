@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sudo apt-get -y -qq install build-essential libncurses-dev
+apt-get -y -qq install build-essential libncurses-dev
 
 vermajor=24
 verminor=5
