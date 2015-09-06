@@ -17,4 +17,4 @@ mkdir -p /usr/local/stow
 make install
 
 cd /usr/local/stow
-stow emacs-$ver
+stow --ignore=dir emacs-$ver
