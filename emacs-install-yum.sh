@@ -2,16 +2,19 @@
 
 yum -y install autoconf automake gcc ncurses-devel git stow make
 
+vermajor=24
+verminor=5
+ver=$vermajor.$verminor
+
 mkdir -p /usr/local/src
-mkdir -p /usr/local/stow
 cd /usr/local/src
+curl -O http://ftp.gnu.org/gnu/emacs/emacs-$ver.tar.xz
+tar xf emacs-$ver.tar.xz
+cd emacs-$ver
+mkdir -p /usr/local/stow
+./autogen.sh
+./configure --without-makeinfo --prefix=/usr/local/stow/emacs-$ver
+make install
 
-git clone -b emacs-24 https://github.com/emacs-mirror/emacs.git /usr/local/src/emacs &&
-cd /usr/local/src/emacs &&
-./autogen.sh &&
-./configure --without-makeinfo --with-xpm=no --with-jpeg=no --with-gif=no --with-tiff=no --prefix=/usr/local/stow/emacs-24 &&
-make install &&
-cd /usr/local/stow &&
-stow -vv emacs-24
-
-echo 'export PATH=/usr/local/bin:$PATH' >>~/.bashrc
+cd /usr/local/stow
+stow emacs-$ver
