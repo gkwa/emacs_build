@@ -15,3 +15,6 @@ mkdir -p /usr/local/stow
 ./autogen.sh
 ./configure --without-makeinfo --prefix=/usr/local/stow/emacs-$ver
 make install
+
+cd /usr/local/stow
+stwo emacs-$ver
