@@ -17,4 +17,4 @@ mkdir -p /usr/local/stow
 make install
 
 cd /usr/local/stow
-stwo emacs-$ver
+stow emacs-$ver
