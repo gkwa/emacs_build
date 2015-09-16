@@ -18,3 +18,6 @@ make install
 
 cd /usr/local/stow
 stow --ignore=dir emacs-$ver
+
+# run emacs so that my melpa packages are pulled down
+emacs --daemon
