@@ -1,7 +1,12 @@
 #!/bin/sh
 
-apt-get -y -qq update
-apt-get -y -qq install build-essential libncurses-dev curl
+if yum >/dev/null 2>&1
+then
+	yum install -y make automake gcc gcc-c++ kernel-devel curl
+else
+	apt-get -y -qq update
+	apt-get -y -qq install build-essential libncurses-dev curl
+fi
 
 vermajor=24
 verminor=5
