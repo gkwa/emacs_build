@@ -1,6 +1,7 @@
 #!/bin/sh
 
-apt-get -y -qq install build-essential libncurses-dev
+apt-get -y -qq update
+apt-get -y -qq install build-essential libncurses-dev curl
 
 vermajor=24
 verminor=5
