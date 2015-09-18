@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if yum >/dev/null 2>&1
+if yum --verison >/dev/null 2>&1
 then
 	yum install -y make automake gcc gcc-c++ kernel-devel curl
 else
