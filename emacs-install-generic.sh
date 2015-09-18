@@ -2,7 +2,7 @@
 
 if yum --verison >/dev/null 2>&1
 then
-	yum install -y make automake gcc gcc-c++ kernel-devel curl
+	yum install -y make automake gcc gcc-c++ kernel-devel curl ncurses-devel
 else
 	apt-get -y -qq update
 	apt-get -y -qq install build-essential libncurses-dev curl
