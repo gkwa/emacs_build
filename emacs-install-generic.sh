@@ -3,9 +3,11 @@
 if yum --verison >/dev/null 2>&1
 then
 	yum install -y make automake gcc gcc-c++ kernel-devel curl ncurses-devel
-else
+elif apt-get --version >/dev/null 2>&1
 	apt-get -y -qq update
 	apt-get -y -qq install build-essential libncurses-dev curl
+elif brew --version >/dev/null 2>&1
+	brew install libjpeg libgif/libungif libtiff
 fi
 
 vermajor=24
